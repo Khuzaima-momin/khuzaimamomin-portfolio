@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- =====================================================
+       META & SEO — Tells browsers and search engines
+       everything they need to know about this page
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Khuzaima Momin — Machine Learning Engineer, Data Analyst & Web Developer. Building intelligent systems and modern web experiences.">
+  <meta name="theme-color" content="#050508">
+
+  <!-- Open Graph — Makes links look great when shared on WhatsApp, LinkedIn etc. -->
+  <meta property="og:title" content="Khuzaima Momin — ML Engineer & Developer">
+  <meta property="og:description" content="Building intelligent ML models and data-driven web solutions.">
+  <meta property="og:type" content="website">
+
+  <title>Khuzaima Momin — ML Engineer & Developer</title>
+
+  <!-- =====================================================
+       FONTS — Loaded with display=swap so text shows
+       immediately using fallback font while Google Fonts
+       loads in the background (faster perceived load)
+  ====================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons — loaded async so it never blocks page render -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+  <style>
+
+    /* =====================================================
+       DESIGN TOKENS — All colors, sizes, and values
+       stored as CSS variables. Change one variable and
+       the whole site updates. Easy to customize.
+    ====================================================== */
+    :root {
+      --primary:     #6d28d9;
+      --primary-lt:  #8b5cf6;
+      --primary-dim: rgba(109,40,217,0.12);
+      --secondary:   #0891b2;
+      --accent:      #f59e0b;
+
+      --bg:          #050508;
+      --bg-2:        #0c0c14;
+      --bg-3:        #111120;
+
+      --glass:       rgba(255,255,255,0.04);
+      --glass-2:     rgba(255,255,255,0.07);
+      --border:      rgba(255,255,255,0.08);
+      --border-2:    rgba(255,255,255,0.14);
+
+      --text:        #f0efff;
+      --text-2:      #a09dc0;
+      --text-3:      #5e5b7a;
+
+      --r-sm:   8px;
+      --r-md:   14px;
+      --r-lg:   22px;
+      --r-xl:   32px;
+
+      /* Single transition used everywhere — consistent feel */
+      --t: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =====================================================
+       RESET — Removes all default browser styles so
+       everything looks the same across Chrome, Firefox,
+       Safari, Edge on any device
+    ====================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      /* Prevents layout shift when scrollbar appears */
+      scrollbar-gutter: stable;
+    }
+
+    /* =====================================================
+       CUSTOM SCROLLBAR — Makes the scrollbar match
+       the site's color theme (visible on desktop)
+    ====================================================== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    /* =====================================================
+       BODY — Base font, background, and text color
+       will-change: none prevents unnecessary GPU layers
+    ====================================================== */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      /* Improves text rendering on all screens */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* =====================================================
+       GRAIN TEXTURE — Subtle noise over the background
+       gives depth. Uses SVG filter instead of an image
+       so no HTTP request needed — zero performance cost
+    ====================================================== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* =====================================================
+       CONTAINER — Centers content and limits max width
+       Responsive padding collapses on smaller screens
+    ====================================================== */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 40px);
+    }
+
+    /* =====================================================
+       SKIP LINK — Accessibility: lets keyboard users
+       skip straight to main content (hidden visually
+       but accessible to screen readers)
+    ====================================================== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: var(--r-sm);
+      font-size: 14px;
+      z-index: 999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* =====================================================
+       NAVBAR — Sticky top bar. backdrop-filter blurs
+       the content behind it for a glassmorphism effect.
+       will-change: transform = GPU acceleration
+    ====================================================== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px clamp(20px, 4vw, 44px);
+      background: rgba(5,5,8,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      /* Tells browser this element moves, prepare GPU layer */
+      will-change: transform;
+    }
+
+    /* Logo text with gradient */
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--primary-lt), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      /* Prevents gradient from being cut off */
+      padding-bottom: 2px;
+    }
+
+    /* Nav links list */
+    nav ul {
+      display: flex;
+      gap: clamp(20px, 3vw, 36px);
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-2);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      transition: color var(--t);
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* Animated underline on hover */
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.5px;
+      left: 0;
+      bottom: -4px;
+      background: linear-gradient(90deg, var(--primary-lt), var(--secondary));
+      border-radius: 2px;
+      transition: width var(--t);
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* Mobile hamburger menu button (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-2);
+      color: var(--text-2);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      font-size: 16px;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--t);
+    }
+    .nav-toggle:hover {
+      background: var(--glass-2);
+      color: var(--text);
+    }
+
+    /* =====================================================
+       BUTTONS — Two variants:
+       .btn = solid gradient primary button
+       .btn.outline-btn = transparent with border
+    ====================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: var(--r-md);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--t);
+      letter-spacing: 0.15px;
+      position: relative;
+      overflow: hidden;
+      /* Prevents text selection on fast clicks */
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Solid button */
+    .btn:not(.outline-btn) {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(109,40,217,0.3);
+    }
+
+    /* Hover shine effect using ::before pseudo element */
+    .btn:not(.outline-btn)::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary-lt), var(--secondary));
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+
+    .btn:not(.outline-btn):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(109,40,217,0.5);
+    }
+
+    .btn:not(.outline-btn):hover::before { opacity: 1; }
+
+    /* Keeps button text above the pseudo-element overlay */
+    .btn:not(.outline-btn) > * { position: relative; z-index: 1; }
+
+    /* Active state — feels tactile like a real button press */
+    .btn:active { transform: translateY(0) scale(0.98); }
+
+    /* Outline / ghost button */
+    .outline-btn {
+      background: transparent;
+      color: var(--primary-lt);
+      border: 1px solid rgba(139,92,246,0.35);
+    }
+
+    .outline-btn:hover {
+      background: rgba(139,92,246,0.1);
+      border-color: var(--primary-lt);
+      transform: translateY(-2px);
+    }
+
+    /* =====================================================
+       HERO SECTION — Full-height intro section with
+       two-column layout: text left, image right
+    ====================================================== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      min-height: 100svh; /* svh = smart viewport height, works on mobile browsers */
+      gap: clamp(32px, 5vw, 72px);
+      padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 6vh, 60px);
+      position: relative;
+    }
+
+    /* Top-right ambient purple glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(109,40,217,0.13) 0%, transparent 65%);
+      pointer-events: none;
+      /* Isolate glow from layout — no performance cost */
+      contain: strict;
+    }
+
+    /* Bottom-left ambient cyan glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(8,145,178,0.09) 0%, transparent 65%);
+      pointer-events: none;
+      contain: strict;
+    }
+
+    /* All hero text content */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1;
+      max-width: 580px;
+    }
+
+    /* "Open to opportunities" pill badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-dim);
+      border: 1px solid rgba(139,92,246,0.22);
+      color: #c4b5fd;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 40px;
+      width: fit-content;
+      letter-spacing: 0.3px;
+    }
+
+    /* Pulsing green dot inside badge */
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4ade80;
+      animation: pulse 2.5s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* Main heading — uses Syne for distinctive look */
+    .hero-content h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--text);
+      letter-spacing: -1.5px;
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+    }
+
+    /* Name gradient inside h1 */
+    .hero-content h1 span {
+      background: linear-gradient(120deg, #a78bfa, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Animated typing text — roles cycle via JavaScript */
+    .typing-text {
+      font-size: clamp(14px, 1.8vw, 18px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-2);
+      min-height: 28px;
+      /* Cursor blink effect via border */
+      border-right: 2px solid var(--primary-lt);
+      padding-right: 4px;
+      width: fit-content;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.12s both,
+                 blink 0.85s step-end infinite;
+    }
+
+    /* Hero description paragraph */
+    .hero-content p {
+      font-size: clamp(14px, 1.5vw, 16px);
+      line-height: 1.8;
+      color: var(--text-2);
+      max-width: 500px;
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.24s both;
+    }
+
+    /* CTA button row */
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.36s both;
+    }
+
+    /* Social icon row */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.48s both;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--border-2);
+      background: var(--glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+      font-size: 16px;
+      text-decoration: none;
+      transition: all var(--t);
+    }
+
+    .social-icons a:hover {
+      background: rgba(139,92,246,0.12);
+      border-color: rgba(139,92,246,0.4);
+      color: var(--primary-lt);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(109,40,217,0.22);
+    }
+
+    /* =====================================================
+       PROFILE IMAGE — Circular photo with spinning
+       gradient ring built using CSS pseudo-elements.
+       No extra HTML divs needed!
+    ====================================================== */
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* The spinning conic gradient ring */
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #6d28d9, #0891b2, #8b5cf6, #6d28d9);
+      animation: spin 8s linear infinite;
+      /* GPU layer for smooth rotation */
+      will-change: transform;
+    }
+
+    /* Dark ring that creates the gap between image and spinner */
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      width: 318px;
+      height: 318px;
+      border-radius: 50%;
+      background: var(--bg);
+      z-index: 1;
+    }
+
+    /* Profile photo */
+    .hero-image img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      object-position: center top; /* Shows face, not torso */
+      border-radius: 50%;
+      display: block;
+      position: relative;
+      z-index: 2;
+      animation: float 5s ease-in-out infinite;
+      will-change: transform;
+      /* Improves image rendering quality */
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* =====================================================
+       SECTION TITLES — Consistent headings across
+       all sections with gradient text + underline bar
+    ====================================================== */
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      text-align: center;
+      margin: clamp(60px, 8vw, 100px) 0 clamp(32px, 4vw, 52px);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      background: linear-gradient(120deg, var(--primary-lt), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+
+    /* Gradient bar under each section title */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      margin: 12px auto 0;
+    }
+
+    /* =====================================================
+       ABOUT SECTION — Single card with intro text
+    ====================================================== */
+    .about-card {
+      background: var(--glass-2);
+      border: 1px solid var(--border);
+      padding: clamp(24px, 3vw, 36px);
+      border-radius: var(--r-lg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: var(--text-2);
+      font-size: 15px;
+    }
+
+    /* =====================================================
+       SKILLS SECTION — Grid of cards with skill bars
+       and technology tag chips
+    ====================================================== */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* Individual skill card */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: clamp(20px, 3vw, 28px);
+      border-radius: var(--r-lg);
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top glow line that appears on hover */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-lt), transparent);
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 56px rgba(109,40,217,0.2);
+      border-color: rgba(139,92,246,0.22);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    /* Card heading */
+    .card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* ── SKILL BARS ── */
+    .skill { margin-bottom: 14px; }
+
+    .skill p {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Gray track */
+    .skill-bar {
+      height: 5px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* Filled progress — width set inline in HTML */
+    .skill-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      /* Animate on load using JS intersection observer */
+      width: 0;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── TECHNOLOGY TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tags span {
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--primary-dim);
+      border: 1px solid rgba(139,92,246,0.18);
+      color: #c4b5fd;
+      transition: all var(--t);
+      cursor: default;
+    }
+
+    .tags span:hover {
+      background: rgba(109,40,217,0.22);
+      border-color: var(--primary-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(109,40,217,0.22);
+    }
+
+    /* =====================================================
+       PROJECTS GRID — 3-column responsive card grid
+       with project thumbnail images
+    ====================================================== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    /* Project card inherits .card styles above */
+    .project h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 14px 0 6px;
+    }
+
+    .project p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* Project image container — clips image + adds overflow control */
+    .project-img {
+      width: 100%;
+      height: 160px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--bg-3);
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--t);
+      /* Lazy load — browser only loads image when near viewport */
+      loading: lazy;
+    }
+
+    .project:hover .project-img img { transform: scale(1.06); }
+
+    /* "View Project" link at bottom of card */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--primary-lt);
+      text-decoration: none;
+      font-weight: 500;
+      transition: gap var(--t);
+    }
+    .project-link:hover { gap: 10px; }
+
+    /* =====================================================
+       TIMELINE — Vertical timeline for experience section
+       Left border line + glowing dots
+    ====================================================== */
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      padding-left: clamp(28px, 4vw, 48px);
+      max-width: 820px;
+    }
+
+    /* Vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: clamp(6px, 1.2vw, 14px);
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      opacity: 0.4;
+      border-radius: 2px;
+    }
+
+    /* Each entry */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+      background: var(--glass-2);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: clamp(16px, 2.5vw, 24px);
+      border-radius: var(--r-md);
+      transition: all var(--t);
+    }
+
+    /* Glowing dot on the timeline line */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: clamp(-30px, -3.5vw, -38px);
+      top: 20px;
+      width: 11px;
+      height: 11px;
+      background: var(--primary-lt);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-lt);
+      transition: all var(--t);
+    }
+
+    .timeline-item:hover {
+      transform: translateX(6px);
+      box-shadow: 0 12px 36px rgba(109,40,217,0.18);
+      border-color: rgba(139,92,246,0.22);
+    }
+
+    /* Dot changes color on item hover */
+    .timeline-item:hover::before {
+      background: var(--secondary);
+      box-shadow: 0 0 16px var(--secondary);
+      transform: scale(1.3);
+    }
+
+    .timeline-item h4 {
+      font-family: 'Syne', sans-serif;
+      color: var(--primary-lt);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p,
+    .timeline-item li {
+      color: var(--text-2);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    .timeline-item li { margin-bottom: 6px; }
+
+    /* =====================================================
+       CONTACT FORM — Full-width form card with
+       styled inputs, labels, and submit button
+    ====================================================== */
+    .contact-form {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Form field wrapper */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    /* All text inputs and textarea */
+    input, textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: var(--r-md);
+      background: var(--bg-3);
+      color: var(--text);
+      border: 1px solid var(--border-2);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      transition: all var(--t);
+      outline: none;
+      /* Prevents resize handle on textarea breaking layout */
+      resize: vertical;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--text-3); }
+
+    /* Focus ring — important for accessibility */
+    input:focus, textarea:focus {
+      border-color: var(--primary-lt);
+      background: var(--bg-2);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.14);
+    }
+
+    /* =====================================================
+       FOOTER — Bottom of page with name, tagline,
+       social links, and copyright
+    ====================================================== */
+    footer {
+      margin-top: clamp(80px, 10vw, 140px);
+      padding: clamp(44px, 6vw, 72px) 20px clamp(28px, 4vw, 40px);
+      text-align: center;
+      position: relative;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Short gradient line at top of footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+    }
+
+    footer h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(120deg, var(--primary-lt), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer > p {
+      color: var(--text-2);
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    /* Social icon row in footer */
+    .footer-socials {
+      margin: 22px 0 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials a {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--glass-2);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      font-size: 16px;
+      text-decoration: none;
+      transition: all var(--t);
+    }
+
+    .footer-socials a:hover {
+      transform: translateY(-4px);
+      color: #fff;
+    }
+
+    /* Platform brand colors on hover */
+    .footer-socials a:nth-child(1):hover { background:#1c1c1c; border-color:#555; box-shadow:0 8px 20px rgba(0,0,0,0.5); }
+    .footer-socials a:nth-child(2):hover { background:#0077b5; border-color:#0077b5; box-shadow:0 8px 20px rgba(0,119,181,0.4); }
+    .footer-socials a:nth-child(3):hover { background:#e1306c; border-color:#e1306c; box-shadow:0 8px 20px rgba(225,48,108,0.4); }
+    .footer-socials a:nth-child(4):hover { background:#6fda44; border-color:#6fda44; box-shadow:0 8px 20px rgba(111,218,68,0.4); }
+    .footer-socials a:nth-child(5):hover { background:#ea4335; border-color:#ea4335; box-shadow:0 8px 20px rgba(234,67,53,0.4); }
+
+    /* Copyright line */
+    .footer-copy {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text-3);
+      letter-spacing: 0.3px;
+    }
+
+    /* =====================================================
+       KEYFRAME ANIMATIONS — Defined once, reused
+       everywhere with animation-delay for staggering
+    ====================================================== */
+
+    /* Content rises up from below while fading in */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Profile photo gently bobs up and down */
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-16px); }
+    }
+
+    /* Spinning ring around profile photo */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Typing cursor blink */
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Green availability dot pulse */
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* =====================================================
+       SCROLL REVEAL — Elements start hidden and
+       animate in when they enter the viewport.
+       JavaScript Intersection Observer triggers the class.
+    ====================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Class added by JS when element is visible */
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delays for grid children */
+    .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+    /* =====================================================
+       RESPONSIVE — Mobile-first adjustments
+       breakpoint 900px: tablets and phones
+       breakpoint 600px: small phones
+    ====================================================== */
+    @media (max-width: 900px) {
+
+      /* Stack hero to single column on mobile */
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+
+      /* Image moves above text on mobile */
+      .hero-image { order: -1; }
+
+      /* Shrink ring and image for mobile */
+      .hero-image::before { width: 256px; height: 256px; }
+      .hero-image::after  { width: 244px; height: 244px; }
+      .hero-image img     { width: 228px; height: 228px; }
+
+      /* Center all flex elements */
+      .hero-content { align-items: center; }
+      .hero-buttons,
+      .social-icons { justify-content: center; }
+
+      /* Typing text can wrap on mobile */
+      .typing-text { white-space: normal; }
+
+      /* Skills grid goes single column */
+      .skills-container { grid-template-columns: 1fr; }
+
+      /* Hide nav links — show hamburger instead */
+      nav ul { display: none; }
+      .nav-toggle { display: flex; }
+
+      /* Mobile nav menu — shown when open class added */
+      nav ul.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(5,5,8,0.97);
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+        gap: 18px;
+        backdrop-filter: blur(20px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Tighter nav padding on small screens */
+      nav { padding: 14px 18px; }
+
+      /* Slightly smaller ring on very small phones */
+      .hero-image::before { width: 220px; height: 220px; }
+      .hero-image::after  { width: 208px; height: 208px; }
+      .hero-image img     { width: 194px; height: 194px; }
+
+      /* Timeline adjustments */
+      .timeline { padding-left: 24px; }
+      .timeline::before { left: 5px; }
+      .timeline-item::before { left: -22px; }
+
+      /* Footer padding */
+      footer { padding: 44px 16px 28px; }
+    }
+
+    /* =====================================================
+       REDUCED MOTION — Respects user's OS setting
+       "Reduce Motion" for people with vestibular
+       disorders or motion sensitivity
+    ====================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .hero-image::before { animation: none; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Skip to main content for keyboard/screen reader users -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div class="container">
+
+    <!-- ================================================
+         NAVBAR — Sticky top navigation
+         Logo | Links | CTA button | Mobile hamburger
+    ================================================= -->
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#home" class="logo">KM.</a>
+
+      <ul id="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Hire Me button — visible on desktop -->
+      <a href="#contact" class="btn" aria-label="Hire Khuzaima">
+        <span>Hire Me</span>
+      </a>
+
+      <!-- Hamburger button — shown on mobile only -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </nav>
+
+    <!-- ================================================
+         MAIN CONTENT — Wrapped in <main> for semantics
+         and accessibility
+    ================================================= -->
+    <main id="main">
+
+      <!-- ── HERO SECTION ── -->
+      <section class="hero" id="home" aria-label="Introduction">
+
+        <div class="hero-content">
+
+          <!-- Availability badge -->
+          <div class="hero-badge" aria-label="Currently available for work">
+            <span class="dot" aria-hidden="true"></span>
+            Available for opportunities
+          </div>
+
+          <!-- Main heading — name highlight -->
+          <h1>Hi, I'm <span>Khuzaima<br>Momin</span></h1>
+
+          <!-- Roles — animated by JS typing effect -->
+          <p class="typing-text" id="typing" aria-live="polite" aria-label="Current role"></p>
+
+          <!-- Short bio -->
+          <p>
+            I design intelligent machine learning models and build data-driven
+            solutions that transform raw data into actionable insights. Passionate
+            about solving real-world problems using Python, JavaScript, and modern
+            web technologies.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="hero-buttons">
+            <a href="#contact" class="btn">
+              <span>Contact Me</span>
+            </a>
+            <a href="Khuzaima_Momin_FlowCV_Resume_2026-05-13.pdf" download class="btn outline-btn" aria-label="Download CV PDF">
+              <i class="fas fa-download" aria-hidden="true"></i>
+              Download CV
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-icons" aria-label="Social media links">
+              <a href="https://github.com/Khuzaima-momin" target="_blank" rel="noopener" aria-label="GitHub profile">
+  <i class="fab fa-github"></i>
+</a>
+            <a href="https://www.linkedin.com/in/khuzaima-momin-668621407" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+            </a>
+<a href="https://instagram.com/_mianmomin_" target="_blank" rel="noopener" aria-label="Instagram profile">
+  <i class="fab fa-instagram" aria-hidden="true"></i>
+</a>
+<a href="mailto:mominkhuzaima1@gmail.com" aria-label="Send Email">
+  <i class="fas fa-envelope"></i>
+</a>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Profile Photo — wrapped in div for CSS ring effect -->
+        <div class="hero-image">
+          <img
+            src="project images/Gemini_Generated_Image_p7se2tp7se2tp7se.png"
+            alt="Khuzaima Momin — Machine Learning Engineer"
+            width="300"
+            height="300"
+            fetchpriority="high"
+          >
+        </div>
+
+      </section>
+
+      <!-- ── ABOUT SECTION ── -->
+      <section id="about" aria-label="About me">
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-card reveal">
+          <p>
+            I am an aspiring Machine Learning Engineer passionate about solving real-world problems using data.
+            I specialize in Python, data analysis, and building predictive models. With a background in full-stack
+            web development and digital marketing, I bridge the gap between data science and digital growth —
+            turning complex datasets into clear, actionable results.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── SKILLS SECTION ── -->
+      <section id="skills" aria-label="Skills and expertise">
+        <h2 class="section-title reveal">Skills & Expertise</h2>
+
+        <div class="skills-container">
+
+          <!-- Machine Learning card -->
+          <div class="card reveal">
+            <h3>Machine Learning</h3>
+
+            <div class="skill">
+              <p>Natural Language Processing</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="80%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <p>Computer Vision</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="70%"></div>
+              </div>
+            </div>
+
+            <div class="tags">
+              <span>Scikit-learn</span>
+              <span>TensorFlow</span>
+              <span>Logistic Regression</span>
+              <span>Random Forest</span>
+              <span>CNN</span>
+              <span>Linear Regression</span>
+            </div>
+          </div>
+
+          <!-- Data Analysis card -->
+          <div class="card reveal">
+            <h3>Data Analysis</h3>
+
+            <div class="skill">
+              <p>Data Cleaning</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="85%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <p>Data Visualization</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="75%"></div>
+              </div>
+            </div>
+
+            <div class="tags">
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>Matplotlib</span>
+            </div>
+          </div>
+
+          <!-- Web Development card -->
+          <div class="card reveal">
+            <h3>Web Development & SEO</h3>
+
+            <div class="skill">
+              <p>Frontend Development</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="75%"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <p>SEO Optimization</p>
+              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-fill" data-width="80%"></div>
+              </div>
+            </div>
+
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>SEO</span>
+              <span>Content Strategy</span>
+            </div>
+          </div>
+
+          <!-- Tools card -->
+          <div class="card reveal">
+            <h3>Tools & Platforms</h3>
+            <p style="font-size:14px;color:var(--text-2);margin-bottom:12px;">
+              Development and productivity tools I use daily.
+            </p>
+            <div class="tags">
+              <span>GitHub</span>
+              <span>Google Colab</span>
+              <span>VS Code</span>
+              <span>Jupyter</span>
+              <span>Kaggle</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── PROJECTS SECTION ── -->
+      <section id="projects" aria-label="Portfolio projects">
+        <h2 class="section-title reveal">Projects</h2>
+
+        <div class="grid">
+
+          <article class="card project reveal">
+            <div class="project-img">
+              <img src="https://via.placeholder.com/400x200/111120/8b5cf6?text=ML+Model" alt="ML Salary Prediction Model" width="400" height="200" loading="lazy">
+            </div>
+            <h3>ML Salary Prediction Model</h3>
+            <p>Predicts salary ranges based on job title, experience, and location using Random Forest.</p>
+            <a href="#" class="project-link" aria-label="View salary prediction project">
+              View Project <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-img">
+              <img src="https://via.placeholder.com/400x200/111120/0891b2?text=Dashboard" alt="Data Dashboard" width="400" height="200" loading="lazy">
+            </div>
+            <h3>Data Dashboard</h3>
+            <p>Interactive dashboard for business insights with real-time filtering and visualization.</p>
+            <a href="https://steady-rugelach-c4d662.netlify.app/" class="project-link" aria-label="View data dashboard project">
+              View Project <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-img">
+              <img src="project images/healthy living.jpg" alt="Portfolio Website" width="400" height="200" loading="lazy">
+            </div>
+            <h3>Portfolio Website</h3>
+            <p>Modern responsive personal portfolio built with semantic HTML, CSS, and vanilla JS.</p>
+            <a href="https://steady-rugelach-c4d662.netlify.app/" class="project-link" aria-label="View portfolio project">
+              View Project <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-img">
+              <img src="https://via.placeholder.com/400x200/111120/38bdf8?text=NLP+Model" alt="NLP Classification" width="400" height="200" loading="lazy">
+            </div>
+            <h3>NLP Tweet Classifier</h3>
+            <p>Disaster tweet classifier using LSTM achieving 83% accuracy on unseen test data.</p>
+            <a href="#" class="project-link" aria-label="View NLP classifier project">
+              View Project <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── EXPERIENCE SECTION ── -->
+      <section id="experience" aria-label="Experience and expertise">
+        <h2 class="section-title reveal">Experience & Expertise</h2>
+
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <h4>Professional Summary</h4>
+            <p>
+Aspiring Machine Learning Engineer with strong expertise in AI-driven application development, data analysis, and Python programming. 
+Skilled in building intelligent solutions using modern machine learning techniques, with additional experience in full stack web development 
+and technical content writing. Passionate about leveraging emerging technologies to develop scalable, user-focused, and innovative digital 
+solutions.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>Machine Learning Projects</h4>
+            <ul>
+  <li>
+    <strong>Machine Learning:</strong> Developed multiple intelligent systems using classification, prediction, and deep learning techniques.
+  </li>
+
+  <li>
+    <strong>London Property Prediction:</strong> Built a machine learning model to predict London house prices using regression algorithms and data preprocessing techniques.
+  </li>
+
+  <li>
+    <strong>Apple Disease Detection:</strong> Developed a deep learning-based image classification system to detect apple leaf diseases using CNN models.
+  </li>
+
+  <li>
+    <strong>Breast Cancer Detection:</strong> Created a predictive healthcare model for early breast cancer detection using supervised machine learning algorithms.
+  </li>
+
+  <li>
+    <strong>Spam Email Detection:</strong> Built an NLP-based spam classifier using Logistic Regression and text vectorization techniques.
+  </li>
+
+  <li>
+    <strong>Sentiment Analysis:</strong> Designed a natural language processing model to analyze customer reviews and classify sentiments as positive, negative, or neutral.
+  </li>
+
+  <li>
+    <strong>Workflow Automation:</strong> Completed full ML pipelines — data cleaning → preprocessing → model training → evaluation — using Google Colab and Python libraries.
+  </li>
+</ul>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>Web Development & Digital Marketing</h4>
+            <ul>
+              <li><strong>Full-Stack Development:</strong> Built and deployed a blogging platform from scratch and proper Gym managment system</li>
+              <li><strong>SEO & Growth:</strong> Improved organic traffic using on-page and technical SEO strategies.</li>
+              <li><strong>Design:</strong> Created branding and UI assets for multiple projects.</li>
+            </ul>
+          </div>
+
+  
+
+        </div>
+      </section>
+
+      <!-- ── CONTACT SECTION ── -->
+      <section id="contact" aria-label="Contact form">
+        <h2 class="section-title reveal">Get In Touch</h2>
+
+        <div class="contact-form card reveal">
+          <form
+            id="contactForm"
+            novalidate
+            aria-label="Contact form"
+            onsubmit="handleSubmit(event)"
+          >
+
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Khuzaima Momin"
+                required
+                autocomplete="name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                autocomplete="email"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn" style="width:100%;justify-content:center;">
+              <span id="btnText">Send Message</span>
+              <i class="fas fa-paper-plane" aria-hidden="true" id="btnIcon"></i>
+            </button>
+
+            <!-- Success/error message shown after submit -->
+            <p id="formMsg" style="margin-top:12px;font-size:14px;text-align:center;display:none;"></p>
+
+          </form>
+        </div>
+      </section>
+
+    </main><!-- end #main -->
+
+    <!-- ── FOOTER ── -->
+    <footer role="contentinfo">
+      <h3>Khuzaima Momin</h3>
+      <p>Building intelligent systems &amp; modern web experiences.</p>
+
+      <div class="footer-socials" aria-label="Footer social links">
+        <a href="https://github.com/Khuzaima-momin" target="_blank" rel="noopener" aria-label="GitHub profile">
+  <i class="fab fa-github"></i>
+</a>
+        </a>
+        <a href="https://www.linkedin.com/in/khuzaima-momin-668621407" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://instagram.com/_mianmomin_" target="_blank" rel="noopener" aria-label="Instagram profile">
+  <i class="fab fa-instagram" aria-hidden="true"></i>
+</a>
+        </a>
+        <a href="https://upwork.com/" target="_blank" rel="noopener" aria-label="Upwork">
+          <i class="fas fa-briefcase" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:mominkhuzaima1@gmail.com" aria-label="Send email">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <p class="footer-copy">
+        &copy; <span id="year"></span> Khuzaima Momin. All rights reserved.
+      </p>
+    </footer>
+
+  </div><!-- end .container -->
+
+
+  <!-- =====================================================
+       JAVASCRIPT — All scripts at the bottom so they
+       never block HTML from rendering (faster load)
+  ====================================================== -->
+ <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  /* ── EMAILJS INIT ───────────────────────── */
+  (function(){
+    emailjs.init("hn9xgD8gVu9IxBWtL"); // 🔥 put your PUBLIC KEY
+  })();
+
+
+  /* ── AUTO YEAR ───────────────────────── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+
+  /* ── NAV TOGGLE ───────────────────────── */
+  const navToggle = document.getElementById('navToggle');
+  const navLinks  = document.getElementById('nav-links');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.querySelector('i').className = isOpen
+      ? 'fas fa-times'
+      : 'fas fa-bars';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+
+  /* ── TYPING EFFECT ───────────────────────── */
+  const roles  = ['Machine Learning Engineer', 'Data Analyst', 'Web Developer'];
+  const el     = document.getElementById('typing');
+  let ri = 0, ci = 0, deleting = false;
+
+  function type() {
+    const word = roles[ri];
+
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) {
+        deleting = true;
+        setTimeout(type, 1500);
+        return;
+      }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) {
+        deleting = false;
+        ri = (ri + 1) % roles.length;
+      }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  setTimeout(type, 500);
+
+
+  /* ── SCROLL REVEAL ───────────────────────── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+  /* ── SKILL BAR ───────────────────────── */
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.skills-container .card').forEach(card => {
+    barObserver.observe(card);
+  });
+
+
+  /* ── ACTIVE NAV ───────────────────────── */
+  const sections  = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('nav ul a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => a.style.color = '');
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) active.style.color = 'var(--primary-lt)';
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+
+  /* ── ✅ EMAILJS FORM SUBMIT (UPDATED) ───────────────────────── */
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const msg     = document.getElementById('formMsg');
+    const btn     = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      msg.style.color = '#f87171';
+      msg.textContent = 'Please fill in all fields.';
+      msg.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+
+    emailjs.sendForm(
+      "service_3avsxqo",   // 🔥 PUT SERVICE ID
+      "template_mvttn42",  // 🔥 PUT TEMPLATE ID
+      document.getElementById("contactForm")
+    )
+    .then(function() {
+      msg.style.display = 'block';
+      msg.style.color = '#4ade80';
+      msg.textContent = '✅ Message sent successfully!';
+
+      btn.disabled = false;
+      btnText.textContent = 'Send Message';
+
+      document.getElementById('contactForm').reset();
+    })
+    .catch(function(error) {
+      msg.style.display = 'block';
+      msg.style.color = '#f87171';
+      msg.textContent = '❌ Failed to send message.';
+
+      btn.disabled = false;
+      btnText.textContent = 'Send Message';
+
+      console.error(error);
+    });
+  }
+
+</script>
+
+</body>
+</html>
