@@ -3,40 +3,30 @@
 <head>
 
   <!-- =====================================================
-       META & SEO — Tells browsers and search engines
-       everything they need to know about this page
+       META & SEO
   ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Khuzaima Momin — Machine Learning Engineer, Data Analyst & Web Developer. Building intelligent systems and modern web experiences.">
   <meta name="theme-color" content="#050508">
 
-  <!-- Open Graph — Makes links look great when shared on WhatsApp, LinkedIn etc. -->
   <meta property="og:title" content="Khuzaima Momin — ML Engineer & Developer">
   <meta property="og:description" content="Building intelligent ML models and data-driven web solutions.">
   <meta property="og:type" content="website">
 
   <title>Khuzaima Momin — ML Engineer & Developer</title>
 
-  <!-- =====================================================
-       FONTS — Loaded with display=swap so text shows
-       immediately using fallback font while Google Fonts
-       loads in the background (faster perceived load)
-  ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons — loaded async so it never blocks page render -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
   <style>
 
     /* =====================================================
-       DESIGN TOKENS — All colors, sizes, and values
-       stored as CSS variables. Change one variable and
-       the whole site updates. Easy to customize.
+       DESIGN TOKENS
     ====================================================== */
     :root {
       --primary:     #6d28d9;
@@ -63,14 +53,11 @@
       --r-lg:   22px;
       --r-xl:   32px;
 
-      /* Single transition used everywhere — consistent feel */
       --t: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* =====================================================
-       RESET — Removes all default browser styles so
-       everything looks the same across Chrome, Firefox,
-       Safari, Edge on any device
+       RESET
     ====================================================== */
     *, *::before, *::after {
       margin: 0;
@@ -80,14 +67,9 @@
 
     html {
       scroll-behavior: smooth;
-      /* Prevents layout shift when scrollbar appears */
       scrollbar-gutter: stable;
     }
 
-    /* =====================================================
-       CUSTOM SCROLLBAR — Makes the scrollbar match
-       the site's color theme (visible on desktop)
-    ====================================================== */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb {
@@ -95,26 +77,16 @@
       border-radius: 10px;
     }
 
-    /* =====================================================
-       BODY — Base font, background, and text color
-       will-change: none prevents unnecessary GPU layers
-    ====================================================== */
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
       line-height: 1.6;
-      /* Improves text rendering on all screens */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* =====================================================
-       GRAIN TEXTURE — Subtle noise over the background
-       gives depth. Uses SVG filter instead of an image
-       so no HTTP request needed — zero performance cost
-    ====================================================== */
     body::after {
       content: '';
       position: fixed;
@@ -125,21 +97,12 @@
       opacity: 0.5;
     }
 
-    /* =====================================================
-       CONTAINER — Centers content and limits max width
-       Responsive padding collapses on smaller screens
-    ====================================================== */
     .container {
       max-width: 1160px;
       margin: 0 auto;
       padding: 0 clamp(16px, 4vw, 40px);
     }
 
-    /* =====================================================
-       SKIP LINK — Accessibility: lets keyboard users
-       skip straight to main content (hidden visually
-       but accessible to screen readers)
-    ====================================================== */
     .skip-link {
       position: absolute;
       top: -100%;
@@ -155,9 +118,7 @@
     .skip-link:focus { top: 8px; }
 
     /* =====================================================
-       NAVBAR — Sticky top bar. backdrop-filter blurs
-       the content behind it for a glassmorphism effect.
-       will-change: transform = GPU acceleration
+       NAVBAR
     ====================================================== */
     nav {
       position: sticky;
@@ -171,11 +132,9 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      /* Tells browser this element moves, prepare GPU layer */
       will-change: transform;
     }
 
-    /* Logo text with gradient */
     .logo {
       font-family: 'Syne', sans-serif;
       font-size: clamp(18px, 2.5vw, 22px);
@@ -186,11 +145,9 @@
       -webkit-text-fill-color: transparent;
       text-decoration: none;
       letter-spacing: -0.3px;
-      /* Prevents gradient from being cut off */
       padding-bottom: 2px;
     }
 
-    /* Nav links list */
     nav ul {
       display: flex;
       gap: clamp(20px, 3vw, 36px);
@@ -208,7 +165,6 @@
 
     nav a:hover { color: var(--text); }
 
-    /* Animated underline on hover */
     nav a::after {
       content: '';
       position: absolute;
@@ -222,7 +178,6 @@
     }
     nav a:hover::after { width: 100%; }
 
-    /* Mobile hamburger menu button (hidden on desktop) */
     .nav-toggle {
       display: none;
       background: none;
@@ -243,9 +198,7 @@
     }
 
     /* =====================================================
-       BUTTONS — Two variants:
-       .btn = solid gradient primary button
-       .btn.outline-btn = transparent with border
+       BUTTONS
     ====================================================== */
     .btn {
       display: inline-flex;
@@ -264,19 +217,16 @@
       letter-spacing: 0.15px;
       position: relative;
       overflow: hidden;
-      /* Prevents text selection on fast clicks */
       user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Solid button */
     .btn:not(.outline-btn) {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #fff;
       box-shadow: 0 4px 20px rgba(109,40,217,0.3);
     }
 
-    /* Hover shine effect using ::before pseudo element */
     .btn:not(.outline-btn)::before {
       content: '';
       position: absolute;
@@ -293,13 +243,10 @@
 
     .btn:not(.outline-btn):hover::before { opacity: 1; }
 
-    /* Keeps button text above the pseudo-element overlay */
     .btn:not(.outline-btn) > * { position: relative; z-index: 1; }
 
-    /* Active state — feels tactile like a real button press */
     .btn:active { transform: translateY(0) scale(0.98); }
 
-    /* Outline / ghost button */
     .outline-btn {
       background: transparent;
       color: var(--primary-lt);
@@ -313,20 +260,18 @@
     }
 
     /* =====================================================
-       HERO SECTION — Full-height intro section with
-       two-column layout: text left, image right
+       HERO SECTION
     ====================================================== */
     .hero {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      min-height: 100svh; /* svh = smart viewport height, works on mobile browsers */
+      min-height: 100svh;
       gap: clamp(32px, 5vw, 72px);
       padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 6vh, 60px);
       position: relative;
     }
 
-    /* Top-right ambient purple glow */
     .hero::before {
       content: '';
       position: absolute;
@@ -334,11 +279,9 @@
       width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(109,40,217,0.13) 0%, transparent 65%);
       pointer-events: none;
-      /* Isolate glow from layout — no performance cost */
       contain: strict;
     }
 
-    /* Bottom-left ambient cyan glow */
     .hero::after {
       content: '';
       position: absolute;
@@ -349,7 +292,6 @@
       contain: strict;
     }
 
-    /* All hero text content */
     .hero-content {
       display: flex;
       flex-direction: column;
@@ -358,7 +300,6 @@
       max-width: 580px;
     }
 
-    /* "Open to opportunities" pill badge */
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -374,7 +315,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* Pulsing green dot inside badge */
     .hero-badge .dot {
       width: 7px;
       height: 7px;
@@ -385,7 +325,6 @@
       flex-shrink: 0;
     }
 
-    /* Main heading — uses Syne for distinctive look */
     .hero-content h1 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(36px, 5.5vw, 64px);
@@ -396,7 +335,6 @@
       animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
     }
 
-    /* Name gradient inside h1 */
     .hero-content h1 span {
       background: linear-gradient(120deg, #a78bfa, #818cf8, #38bdf8);
       -webkit-background-clip: text;
@@ -404,14 +342,12 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Animated typing text — roles cycle via JavaScript */
     .typing-text {
       font-size: clamp(14px, 1.8vw, 18px);
       font-weight: 400;
       font-style: italic;
       color: var(--text-2);
       min-height: 28px;
-      /* Cursor blink effect via border */
       border-right: 2px solid var(--primary-lt);
       padding-right: 4px;
       width: fit-content;
@@ -422,7 +358,6 @@
                  blink 0.85s step-end infinite;
     }
 
-    /* Hero description paragraph */
     .hero-content p {
       font-size: clamp(14px, 1.5vw, 16px);
       line-height: 1.8;
@@ -431,7 +366,6 @@
       animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.24s both;
     }
 
-    /* CTA button row */
     .hero-buttons {
       display: flex;
       gap: 12px;
@@ -439,7 +373,6 @@
       animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.36s both;
     }
 
-    /* Social icon row */
     .social-icons {
       display: flex;
       gap: 10px;
@@ -470,9 +403,7 @@
     }
 
     /* =====================================================
-       PROFILE IMAGE — Circular photo with spinning
-       gradient ring built using CSS pseudo-elements.
-       No extra HTML divs needed!
+       PROFILE IMAGE
     ====================================================== */
     .hero-image {
       display: flex;
@@ -483,7 +414,6 @@
       flex-shrink: 0;
     }
 
-    /* The spinning conic gradient ring */
     .hero-image::before {
       content: '';
       position: absolute;
@@ -492,11 +422,9 @@
       border-radius: 50%;
       background: conic-gradient(from 0deg, #6d28d9, #0891b2, #8b5cf6, #6d28d9);
       animation: spin 8s linear infinite;
-      /* GPU layer for smooth rotation */
       will-change: transform;
     }
 
-    /* Dark ring that creates the gap between image and spinner */
     .hero-image::after {
       content: '';
       position: absolute;
@@ -507,25 +435,22 @@
       z-index: 1;
     }
 
-    /* Profile photo */
     .hero-image img {
       width: 300px;
       height: 300px;
       object-fit: cover;
-      object-position: center top; /* Shows face, not torso */
+      object-position: center top;
       border-radius: 50%;
       display: block;
       position: relative;
       z-index: 2;
       animation: float 5s ease-in-out infinite;
       will-change: transform;
-      /* Improves image rendering quality */
       image-rendering: -webkit-optimize-contrast;
     }
 
     /* =====================================================
-       SECTION TITLES — Consistent headings across
-       all sections with gradient text + underline bar
+       SECTION TITLES
     ====================================================== */
     .section-title {
       font-family: 'Syne', sans-serif;
@@ -541,7 +466,6 @@
       position: relative;
     }
 
-    /* Gradient bar under each section title */
     .section-title::after {
       content: '';
       display: block;
@@ -553,7 +477,7 @@
     }
 
     /* =====================================================
-       ABOUT SECTION — Single card with intro text
+       ABOUT SECTION
     ====================================================== */
     .about-card {
       background: var(--glass-2);
@@ -570,8 +494,7 @@
     }
 
     /* =====================================================
-       SKILLS SECTION — Grid of cards with skill bars
-       and technology tag chips
+       SKILLS SECTION
     ====================================================== */
     .skills-container {
       display: grid;
@@ -579,7 +502,6 @@
       gap: 20px;
     }
 
-    /* Individual skill card */
     .card {
       background: var(--glass);
       border: 1px solid var(--border);
@@ -592,7 +514,6 @@
       overflow: hidden;
     }
 
-    /* Top glow line that appears on hover */
     .card::before {
       content: '';
       position: absolute;
@@ -611,7 +532,6 @@
 
     .card:hover::before { opacity: 1; }
 
-    /* Card heading */
     .card h3 {
       font-family: 'Syne', sans-serif;
       font-size: 17px;
@@ -620,7 +540,6 @@
       margin-bottom: 16px;
     }
 
-    /* ── SKILL BARS ── */
     .skill { margin-bottom: 14px; }
 
     .skill p {
@@ -631,7 +550,6 @@
       justify-content: space-between;
     }
 
-    /* Gray track */
     .skill-bar {
       height: 5px;
       background: rgba(255,255,255,0.07);
@@ -639,17 +557,14 @@
       overflow: hidden;
     }
 
-    /* Filled progress — width set inline in HTML */
     .skill-fill {
       height: 100%;
       border-radius: 10px;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
-      /* Animate on load using JS intersection observer */
       width: 0;
       transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ── TECHNOLOGY TAGS ── */
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -677,8 +592,7 @@
     }
 
     /* =====================================================
-       PROJECTS GRID — 3-column responsive card grid
-       with project thumbnail images
+       PROJECTS GRID
     ====================================================== */
     .grid {
       display: grid;
@@ -686,7 +600,6 @@
       gap: 22px;
     }
 
-    /* Project card inherits .card styles above */
     .project h3 {
       font-family: 'Syne', sans-serif;
       font-size: 16px;
@@ -701,7 +614,6 @@
       line-height: 1.6;
     }
 
-    /* Project image container — clips image + adds overflow control */
     .project-img {
       width: 100%;
       height: 160px;
@@ -715,13 +627,10 @@
       height: 100%;
       object-fit: cover;
       transition: transform var(--t);
-      /* Lazy load — browser only loads image when near viewport */
-      loading: lazy;
     }
 
     .project:hover .project-img img { transform: scale(1.06); }
 
-    /* "View Project" link at bottom of card */
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -736,8 +645,7 @@
     .project-link:hover { gap: 10px; }
 
     /* =====================================================
-       TIMELINE — Vertical timeline for experience section
-       Left border line + glowing dots
+       TIMELINE
     ====================================================== */
     .timeline {
       position: relative;
@@ -746,7 +654,6 @@
       max-width: 820px;
     }
 
-    /* Vertical line */
     .timeline::before {
       content: '';
       position: absolute;
@@ -759,7 +666,6 @@
       border-radius: 2px;
     }
 
-    /* Each entry */
     .timeline-item {
       position: relative;
       margin-bottom: 24px;
@@ -772,7 +678,6 @@
       transition: all var(--t);
     }
 
-    /* Glowing dot on the timeline line */
     .timeline-item::before {
       content: '';
       position: absolute;
@@ -792,7 +697,6 @@
       border-color: rgba(139,92,246,0.22);
     }
 
-    /* Dot changes color on item hover */
     .timeline-item:hover::before {
       background: var(--secondary);
       box-shadow: 0 0 16px var(--secondary);
@@ -822,15 +726,13 @@
     .timeline-item li { margin-bottom: 6px; }
 
     /* =====================================================
-       CONTACT FORM — Full-width form card with
-       styled inputs, labels, and submit button
+       CONTACT FORM
     ====================================================== */
     .contact-form {
       max-width: 640px;
       margin: 0 auto;
     }
 
-    /* Form field wrapper */
     .form-group {
       margin-bottom: 16px;
     }
@@ -844,7 +746,6 @@
       letter-spacing: 0.2px;
     }
 
-    /* All text inputs and textarea */
     input, textarea {
       width: 100%;
       padding: 13px 16px;
@@ -856,13 +757,11 @@
       font-size: 14px;
       transition: all var(--t);
       outline: none;
-      /* Prevents resize handle on textarea breaking layout */
       resize: vertical;
     }
 
     input::placeholder, textarea::placeholder { color: var(--text-3); }
 
-    /* Focus ring — important for accessibility */
     input:focus, textarea:focus {
       border-color: var(--primary-lt);
       background: var(--bg-2);
@@ -870,8 +769,7 @@
     }
 
     /* =====================================================
-       FOOTER — Bottom of page with name, tagline,
-       social links, and copyright
+       FOOTER
     ====================================================== */
     footer {
       margin-top: clamp(80px, 10vw, 140px);
@@ -882,7 +780,6 @@
       border-top: 1px solid var(--border);
     }
 
-    /* Short gradient line at top of footer */
     footer::before {
       content: '';
       position: absolute;
@@ -912,7 +809,6 @@
       margin: 4px 0;
     }
 
-    /* Social icon row in footer */
     .footer-socials {
       margin: 22px 0 14px;
       display: flex;
@@ -941,14 +837,12 @@
       color: #fff;
     }
 
-    /* Platform brand colors on hover */
     .footer-socials a:nth-child(1):hover { background:#1c1c1c; border-color:#555; box-shadow:0 8px 20px rgba(0,0,0,0.5); }
     .footer-socials a:nth-child(2):hover { background:#0077b5; border-color:#0077b5; box-shadow:0 8px 20px rgba(0,119,181,0.4); }
     .footer-socials a:nth-child(3):hover { background:#e1306c; border-color:#e1306c; box-shadow:0 8px 20px rgba(225,48,108,0.4); }
     .footer-socials a:nth-child(4):hover { background:#6fda44; border-color:#6fda44; box-shadow:0 8px 20px rgba(111,218,68,0.4); }
     .footer-socials a:nth-child(5):hover { background:#ea4335; border-color:#ea4335; box-shadow:0 8px 20px rgba(234,67,53,0.4); }
 
-    /* Copyright line */
     .footer-copy {
       margin-top: 18px;
       font-size: 12px;
@@ -957,42 +851,33 @@
     }
 
     /* =====================================================
-       KEYFRAME ANIMATIONS — Defined once, reused
-       everywhere with animation-delay for staggering
+       KEYFRAME ANIMATIONS
     ====================================================== */
-
-    /* Content rises up from below while fading in */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Profile photo gently bobs up and down */
     @keyframes float {
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(-16px); }
     }
 
-    /* Spinning ring around profile photo */
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    /* Typing cursor blink */
     @keyframes blink {
       50% { border-color: transparent; }
     }
 
-    /* Green availability dot pulse */
     @keyframes pulse {
       0%,100% { opacity: 1; transform: scale(1); }
       50%      { opacity: 0.4; transform: scale(0.7); }
     }
 
     /* =====================================================
-       SCROLL REVEAL — Elements start hidden and
-       animate in when they enter the viewport.
-       JavaScript Intersection Observer triggers the class.
+       SCROLL REVEAL
     ====================================================== */
     .reveal {
       opacity: 0;
@@ -1001,55 +886,42 @@
                   transform 0.6s cubic-bezier(0.4,0,0.2,1);
     }
 
-    /* Class added by JS when element is visible */
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Staggered delays for grid children */
     .reveal:nth-child(2) { transition-delay: 0.1s; }
     .reveal:nth-child(3) { transition-delay: 0.2s; }
     .reveal:nth-child(4) { transition-delay: 0.3s; }
 
     /* =====================================================
-       RESPONSIVE — Mobile-first adjustments
-       breakpoint 900px: tablets and phones
-       breakpoint 600px: small phones
+       RESPONSIVE
     ====================================================== */
     @media (max-width: 900px) {
-
-      /* Stack hero to single column on mobile */
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 40px;
       }
 
-      /* Image moves above text on mobile */
       .hero-image { order: -1; }
 
-      /* Shrink ring and image for mobile */
       .hero-image::before { width: 256px; height: 256px; }
       .hero-image::after  { width: 244px; height: 244px; }
       .hero-image img     { width: 228px; height: 228px; }
 
-      /* Center all flex elements */
       .hero-content { align-items: center; }
       .hero-buttons,
       .social-icons { justify-content: center; }
 
-      /* Typing text can wrap on mobile */
       .typing-text { white-space: normal; }
 
-      /* Skills grid goes single column */
       .skills-container { grid-template-columns: 1fr; }
 
-      /* Hide nav links — show hamburger instead */
       nav ul { display: none; }
       .nav-toggle { display: flex; }
 
-      /* Mobile nav menu — shown when open class added */
       nav ul.open {
         display: flex;
         flex-direction: column;
@@ -1066,28 +938,19 @@
     }
 
     @media (max-width: 600px) {
-      /* Tighter nav padding on small screens */
       nav { padding: 14px 18px; }
 
-      /* Slightly smaller ring on very small phones */
       .hero-image::before { width: 220px; height: 220px; }
       .hero-image::after  { width: 208px; height: 208px; }
       .hero-image img     { width: 194px; height: 194px; }
 
-      /* Timeline adjustments */
       .timeline { padding-left: 24px; }
       .timeline::before { left: 5px; }
       .timeline-item::before { left: -22px; }
 
-      /* Footer padding */
       footer { padding: 44px 16px 28px; }
     }
 
-    /* =====================================================
-       REDUCED MOTION — Respects user's OS setting
-       "Reduce Motion" for people with vestibular
-       disorders or motion sensitivity
-    ====================================================== */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1101,14 +964,12 @@
 
 <body>
 
-  <!-- Skip to main content for keyboard/screen reader users -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="container">
 
     <!-- ================================================
-         NAVBAR — Sticky top navigation
-         Logo | Links | CTA button | Mobile hamburger
+         NAVBAR
     ================================================= -->
     <nav role="navigation" aria-label="Main navigation">
       <a href="#home" class="logo">KM.</a>
@@ -1122,20 +983,17 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!-- Hire Me button — visible on desktop -->
       <a href="#contact" class="btn" aria-label="Hire Khuzaima">
         <span>Hire Me</span>
       </a>
 
-      <!-- Hamburger button — shown on mobile only -->
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
     </nav>
 
     <!-- ================================================
-         MAIN CONTENT — Wrapped in <main> for semantics
-         and accessibility
+         MAIN CONTENT
     ================================================= -->
     <main id="main">
 
@@ -1144,19 +1002,15 @@
 
         <div class="hero-content">
 
-          <!-- Availability badge -->
           <div class="hero-badge" aria-label="Currently available for work">
             <span class="dot" aria-hidden="true"></span>
             Available for opportunities
           </div>
 
-          <!-- Main heading — name highlight -->
           <h1>Hi, I'm <span>Khuzaima<br>Momin</span></h1>
 
-          <!-- Roles — animated by JS typing effect -->
           <p class="typing-text" id="typing" aria-live="polite" aria-label="Current role"></p>
 
-          <!-- Short bio -->
           <p>
             I design intelligent machine learning models and build data-driven
             solutions that transform raw data into actionable insights. Passionate
@@ -1164,7 +1018,6 @@
             web technologies.
           </p>
 
-          <!-- CTA Buttons -->
           <div class="hero-buttons">
             <a href="#contact" class="btn">
               <span>Contact Me</span>
@@ -1175,26 +1028,23 @@
             </a>
           </div>
 
-          <!-- Social Links -->
           <div class="social-icons" aria-label="Social media links">
-              <a href="https://github.com/Khuzaima-momin" target="_blank" rel="noopener" aria-label="GitHub profile">
-  <i class="fab fa-github"></i>
-</a>
+            <a href="https://github.com/Khuzaima-momin" target="_blank" rel="noopener" aria-label="GitHub profile">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
             <a href="https://www.linkedin.com/in/khuzaima-momin/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
               <i class="fab fa-linkedin" aria-hidden="true"></i>
             </a>
-<a href="https://instagram.com/_mianmomin_" target="_blank" rel="noopener" aria-label="Instagram profile">
-  <i class="fab fa-instagram" aria-hidden="true"></i>
-</a>
-<a href="mailto:mominkhuzaima1@gmail.com" aria-label="Send Email">
-  <i class="fas fa-envelope"></i>
-</a>
+            <a href="https://instagram.com/_mianmomin_" target="_blank" rel="noopener" aria-label="Instagram profile">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:mominkhuzaima1@gmail.com" aria-label="Send Email">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
             </a>
           </div>
 
         </div>
 
-        <!-- Profile Photo — wrapped in div for CSS ring effect -->
         <div class="hero-image">
           <img
             src="project images/WhatsApp Image 2026-05-30 at 6.42.25 PM.jpeg"
@@ -1222,101 +1072,101 @@
 
       <!-- ── SKILLS SECTION ── -->
       <section id="skills" aria-label="Skills and expertise">
-        <h2 class="section-title reveal">Skills & Expertise</h2>
+        <h2 class="section-title reveal">Skills &amp; Expertise</h2>
 
         <div class="skills-container">
 
-          ```html
-<!-- Machine Learning Card -->
-<div class="card reveal">
-    <h3>Machine Learning</h3>
+          <!-- Machine Learning Card -->
+          <div class="card reveal">
+            <h3>Machine Learning</h3>
 
-    <div class="skill">
-        <p>Model Evaluation & Optimization</p>
-    </div>
+            <div class="skill">
+              <p>Model Evaluation &amp; Optimization</p>
+            </div>
 
-    <div class="skill">
-        <p>Traditional Machine Learning</p>
-    </div>
+            <div class="skill">
+              <p>Traditional Machine Learning</p>
+            </div>
 
-    <div class="skill">
-        <p>Natural Language Processing (NLP)</p>
-    </div>
+            <div class="skill">
+              <p>Natural Language Processing (NLP)</p>
+            </div>
 
-    <div class="skill">
-        <p>Computer Vision</p>
-    </div>
+            <div class="skill">
+              <p>Computer Vision</p>
+            </div>
 
-    <div class="tags">
-        <span>Scikit-learn</span>
-        <span>Logistic Regression</span>
-        <span>Random Forest</span>
-        <span>CNN</span>
-        <span>Linear Regression</span>
-    </div>
-</div>
+            <div class="tags">
+              <span>Scikit-learn</span>
+              <span>Logistic Regression</span>
+              <span>Random Forest</span>
+              <span>CNN</span>
+              <span>Linear Regression</span>
+            </div>
+          </div>
 
-<!-- Data Analysis Card -->
-<div class="card reveal">
-    <h3>Data Analysis</h3>
+          <!-- Data Analysis Card -->
+          <div class="card reveal">
+            <h3>Data Analysis</h3>
 
-    <div class="skill">
-        <p>Data Cleaning</p>
-    </div>
+            <div class="skill">
+              <p>Data Cleaning</p>
+            </div>
 
-    <div class="skill">
-        <p>Data Visualization</p>
-    </div>
+            <div class="skill">
+              <p>Data Visualization</p>
+            </div>
 
-    <div class="skill">
-        <p>Data Preprocessing & Feature Engineering</p>
-    </div>
+            <div class="skill">
+              <p>Data Preprocessing &amp; Feature Engineering</p>
+            </div>
 
-    <div class="tags">
-        <span>Pandas</span>
-        <span>NumPy</span>
-        <span>Matplotlib</span>
-    </div>
-</div>
+            <div class="tags">
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>Matplotlib</span>
+            </div>
+          </div>
 
-<!-- Web Development Card -->
-<div class="card reveal">
-    <h3>Web Development & SEO</h3>
+          <!-- Web Development Card -->
+          <div class="card reveal">
+            <h3>Web Development &amp; SEO</h3>
 
-    <div class="skill">
-        <p>Full-Stack Web Development</p>
-    </div>
+            <div class="skill">
+              <p>Full-Stack Web Development</p>
+            </div>
 
-    <div class="skill">
-        <p>Full-Stack AI Application Development</p>
-    </div>
+            <div class="skill">
+              <p>Full-Stack AI Application Development</p>
+            </div>
 
-    <div class="tags">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>SEO</span>
-        <span>Content Strategy</span>
-    </div>
-</div>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>SEO</span>
+              <span>Content Strategy</span>
+            </div>
+          </div>
 
-<!-- Tools & Platforms Card -->
-<div class="card reveal">
-    <h3>Tools & Platforms</h3>
+          <!-- Tools & Platforms Card -->
+          <div class="card reveal">
+            <h3>Tools &amp; Platforms</h3>
 
-    <p style="font-size:14px;color:var(--text-2);margin-bottom:12px;">
-        Development and productivity tools I use regularly.
-    </p>
+            <p style="font-size:14px;color:var(--text-2);margin-bottom:12px;">
+              Development and productivity tools I use regularly.
+            </p>
 
-    <div class="tags">
-        <span>GitHub</span>
-        <span>Google Colab</span>
-        <span>VS Code</span>
-        <span>Jupyter Notebook</span>
-        <span>Kaggle</span>
-    </div>
-</div>
+            <div class="tags">
+              <span>GitHub</span>
+              <span>Google Colab</span>
+              <span>VS Code</span>
+              <span>Jupyter Notebook</span>
+              <span>Kaggle</span>
+            </div>
+          </div>
 
-
+        </div>
+      </section>
 
       <!-- ── PROJECTS SECTION ── -->
       <section id="projects" aria-label="Portfolio projects">
@@ -1350,7 +1200,7 @@
             <div class="project-img">
               <img src="project images/healthy living.jpg" alt="Portfolio Website" width="400" height="200" loading="lazy">
             </div>
-            <h3>Portfolio Website</h3>
+            <h3> Health & Lifestyle Blogging Platform</h3>
             <p>Modern responsive personal portfolio built with semantic HTML, CSS, and vanilla JS.</p>
             <a href="https://steady-rugelach-c4d662.netlify.app/" class="project-link" aria-label="View portfolio project">
               View Project <i class="fas fa-arrow-right" aria-hidden="true"></i>
@@ -1373,51 +1223,40 @@
 
       <!-- ── EXPERIENCE SECTION ── -->
       <section id="experience" aria-label="Experience and expertise">
-        <h2 class="section-title reveal">Experience & Expertise</h2>
+        <h2 class="section-title reveal">Experience &amp; Expertise</h2>
 
         <div class="timeline">
 
           <div class="timeline-item reveal">
             <h4>Professional Summary</h4>
             <p>
-Aspiring Machine Learning Engineer with strong expertise in AI-driven application development, data analysis, and Python programming. 
-Skilled in building intelligent solutions using modern machine learning techniques, with additional experience in full stack web development 
-and technical content writing. Passionate about leveraging emerging technologies to develop scalable, user-focused, and innovative digital 
-solutions.
+              Aspiring Machine Learning Engineer with strong expertise in AI-driven application development, data analysis, and Python programming.
+              Skilled in building intelligent solutions using modern machine learning techniques, with additional experience in full stack web development
+              and technical content writing. Passionate about leveraging emerging technologies to develop scalable, user-focused, and innovative digital
+              solutions.
             </p>
           </div>
 
           <div class="timeline-item reveal">
             <h4>Projects</h4>
             <ul>
-
-  <li>
-    <strong>London Property Prediction:</strong> Developed a machine learning-based property valuation system to predict London house prices using regression models, feature engineering, and data preprocessing techniques.
-  </li>
-
-
-  <li>
-    <strong>Fraud Detection System:</strong> Developed an end-to-end fraud detection platform capable of analyzing transaction patterns and identifying suspicious activities using machine learning classification models and explainable AI techniques.
-  </li>
-
-  <li>
-    <strong>Resume ATS Scoring System:</strong> Created an intelligent resume screening application that processes candidate resumes, matches skills against job requirements, and generates ATS scores to support recruiter decision-making.
-  </li>
-
-  <li>
-    <strong>Web-Based Machine Learning Solutions:</strong> Designed and deployed interactive machine learning applications with integrated prediction systems, responsive user interfaces, and cloud deployment for real-world usage.
-  </li>
-
-  <li>
-    <strong>Health blogging website:</strong> designed and deployed healthy lifestyle blogging website and uploaded articals on it regularly.
-  </li>
-
-</ul>
+              <li>
+                <strong>London Property Prediction:</strong> Developed a machine learning-based property valuation system to predict London house prices using regression models, feature engineering, and data preprocessing techniques.
+              </li>
+              <li>
+                <strong>Fraud Detection System:</strong> Developed an end-to-end fraud detection platform capable of analyzing transaction patterns and identifying suspicious activities using machine learning classification models and explainable AI techniques.
+              </li>
+              <li>
+                <strong>Resume ATS Scoring System:</strong> Created an intelligent resume screening application that processes candidate resumes, matches skills against job requirements, and generates ATS scores to support recruiter decision-making.
+              </li>
+              <li>
+                <strong>Web-Based Machine Learning Solutions:</strong> Designed and deployed interactive machine learning applications with integrated prediction systems, responsive user interfaces, and cloud deployment for real-world usage.
+              </li>
+              <li>
+                <strong>Health blogging website:</strong> Designed and deployed healthy lifestyle blogging website and uploaded articles on it regularly.
+              </li>
+            </ul>
           </div>
-
-        
-
-  
 
         </div>
       </section>
@@ -1474,14 +1313,13 @@ solutions.
               <i class="fas fa-paper-plane" aria-hidden="true" id="btnIcon"></i>
             </button>
 
-            <!-- Success/error message shown after submit -->
             <p id="formMsg" style="margin-top:12px;font-size:14px;text-align:center;display:none;"></p>
 
           </form>
         </div>
       </section>
 
-    </main><!-- end #main -->
+    </main>
 
     <!-- ── FOOTER ── -->
     <footer role="contentinfo">
@@ -1490,15 +1328,13 @@ solutions.
 
       <div class="footer-socials" aria-label="Footer social links">
         <a href="https://github.com/Khuzaima-momin" target="_blank" rel="noopener" aria-label="GitHub profile">
-  <i class="fab fa-github"></i>
-</a>
+          <i class="fab fa-github" aria-hidden="true"></i>
         </a>
         <a href="https://www.linkedin.com/in/khuzaima-momin/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
         <a href="https://instagram.com/_mianmomin_" target="_blank" rel="noopener" aria-label="Instagram profile">
-  <i class="fab fa-instagram" aria-hidden="true"></i>
-</a>
+          <i class="fab fa-instagram" aria-hidden="true"></i>
         </a>
         <a href="https://upwork.com/" target="_blank" rel="noopener" aria-label="Upwork">
           <i class="fas fa-briefcase" aria-hidden="true"></i>
@@ -1513,170 +1349,160 @@ solutions.
       </p>
     </footer>
 
-  </div><!-- end .container -->
-
+  </div>
 
   <!-- =====================================================
-       JAVASCRIPT — All scripts at the bottom so they
-       never block HTML from rendering (faster load)
+       JAVASCRIPT
   ====================================================== -->
- <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-<script>
-  /* ── EMAILJS INIT ───────────────────────── */
-  (function(){
-    emailjs.init("hn9xgD8gVu9IxBWtL"); // 🔥 put your PUBLIC KEY
-  })();
+  <script>
+    /* ── EMAILJS INIT ── */
+    (function(){
+      emailjs.init("hn9xgD8gVu9IxBWtL");
+    })();
 
+    /* ── AUTO YEAR ── */
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ── AUTO YEAR ───────────────────────── */
-  document.getElementById('year').textContent = new Date().getFullYear();
+    /* ── NAV TOGGLE ── */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('nav-links');
 
-
-  /* ── NAV TOGGLE ───────────────────────── */
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('nav-links');
-
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
-    navToggle.querySelector('i').className = isOpen
-      ? 'fas fa-times'
-      : 'fas fa-bars';
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.querySelector('i').className = isOpen
+        ? 'fas fa-times'
+        : 'fas fa-bars';
     });
-  });
 
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
 
-  /* ── TYPING EFFECT ───────────────────────── */
-  const roles  = ['Machine Learning Engineer', 'Data Analyst', 'Web Developer'];
-  const el     = document.getElementById('typing');
-  let ri = 0, ci = 0, deleting = false;
+    /* ── TYPING EFFECT ── */
+    const roles  = ['Machine Learning Engineer', 'Data Analyst', 'Web Developer'];
+    const el     = document.getElementById('typing');
+    let ri = 0, ci = 0, deleting = false;
 
-  function type() {
-    const word = roles[ri];
+    function type() {
+      const word = roles[ri];
 
-    if (!deleting) {
-      el.textContent = word.slice(0, ++ci);
-      if (ci === word.length) {
-        deleting = true;
-        setTimeout(type, 1500);
+      if (!deleting) {
+        el.textContent = word.slice(0, ++ci);
+        if (ci === word.length) {
+          deleting = true;
+          setTimeout(type, 1500);
+          return;
+        }
+      } else {
+        el.textContent = word.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          ri = (ri + 1) % roles.length;
+        }
+      }
+      setTimeout(type, deleting ? 40 : 80);
+    }
+    setTimeout(type, 500);
+
+    /* ── SCROLL REVEAL ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── SKILL BAR ── */
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width;
+          });
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.skills-container .card').forEach(card => {
+      barObserver.observe(card);
+    });
+
+    /* ── ACTIVE NAV ── */
+    const sections   = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('nav ul a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.style.color = '');
+          const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+          if (active) active.style.color = 'var(--primary-lt)';
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    /* ── EMAILJS FORM SUBMIT ── */
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const msg     = document.getElementById('formMsg');
+      const btn     = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        msg.style.color = '#f87171';
+        msg.textContent = 'Please fill in all fields.';
+        msg.style.display = 'block';
         return;
       }
-    } else {
-      el.textContent = word.slice(0, --ci);
-      if (ci === 0) {
-        deleting = false;
-        ri = (ri + 1) % roles.length;
-      }
+
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+
+      emailjs.sendForm(
+        "service_3avsxqo",
+        "template_mvttn42",
+        document.getElementById("contactForm")
+      )
+      .then(function() {
+        msg.style.display = 'block';
+        msg.style.color = '#4ade80';
+        msg.textContent = '✅ Message sent successfully!';
+
+        btn.disabled = false;
+        btnText.textContent = 'Send Message';
+
+        document.getElementById('contactForm').reset();
+      })
+      .catch(function(error) {
+        msg.style.display = 'block';
+        msg.style.color = '#f87171';
+        msg.textContent = '❌ Failed to send message.';
+
+        btn.disabled = false;
+        btnText.textContent = 'Send Message';
+
+        console.error(error);
+      });
     }
-    setTimeout(type, deleting ? 40 : 80);
-  }
-  setTimeout(type, 500);
-
-
-  /* ── SCROLL REVEAL ───────────────────────── */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-
-  /* ── SKILL BAR ───────────────────────── */
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-          bar.style.width = bar.dataset.width;
-        });
-        barObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  document.querySelectorAll('.skills-container .card').forEach(card => {
-    barObserver.observe(card);
-  });
-
-
-  /* ── ACTIVE NAV ───────────────────────── */
-  const sections  = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('nav ul a');
-
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navAnchors.forEach(a => a.style.color = '');
-        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-        if (active) active.style.color = 'var(--primary-lt)';
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach(s => sectionObserver.observe(s));
-
-
-  /* ── ✅ EMAILJS FORM SUBMIT (UPDATED) ───────────────────────── */
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const msg     = document.getElementById('formMsg');
-    const btn     = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) {
-      msg.style.color = '#f87171';
-      msg.textContent = 'Please fill in all fields.';
-      msg.style.display = 'block';
-      return;
-    }
-
-    btn.disabled = true;
-    btnText.textContent = 'Sending...';
-
-    emailjs.sendForm(
-      "service_3avsxqo",   // 🔥 PUT SERVICE ID
-      "template_mvttn42",  // 🔥 PUT TEMPLATE ID
-      document.getElementById("contactForm")
-    )
-    .then(function() {
-      msg.style.display = 'block';
-      msg.style.color = '#4ade80';
-      msg.textContent = '✅ Message sent successfully!';
-
-      btn.disabled = false;
-      btnText.textContent = 'Send Message';
-
-      document.getElementById('contactForm').reset();
-    })
-    .catch(function(error) {
-      msg.style.display = 'block';
-      msg.style.color = '#f87171';
-      msg.textContent = '❌ Failed to send message.';
-
-      btn.disabled = false;
-      btnText.textContent = 'Send Message';
-
-      console.error(error);
-    });
-  }
-
-</script>
+  </script>
 
 </body>
 </html>
